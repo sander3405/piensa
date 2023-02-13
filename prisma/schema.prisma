@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model paradas {
+  id Int @id @default(autoincrement())
+  name String
+  street1 String
+  street2 String
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+}
+
+model linea {
+  id Int @id @default(autoincrement())
+  number Int
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+  
+}
+
+model recorrido {
+  id Int @id @default(autoincrement())
+  name String
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+  
+}
+model ruta {
+  id Int @id @default(autoincrement())
+  name String
+  direction String
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+  
+}
+
+model estado {
+  id Int @id @default(autoincrement())
+  parada_id Int
+  linea_id Int
+  status String
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+  
+}
