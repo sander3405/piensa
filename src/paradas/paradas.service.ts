@@ -19,7 +19,7 @@ export class ParadasService {
   }
 
   update(id: number, updateParadaDto: UpdateParadaDto) {
-    return this.prisma.paradas.update({
+    return this.prisma.parada.update({
       where: { id },
       data: updateParadaDto,
     });
